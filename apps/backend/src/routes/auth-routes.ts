@@ -3,7 +3,7 @@ import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { authAdminRealm, authRealm } from '@/shared/auth.ts'
 import { env } from '@/shared/env'
 
-const authRoutes: FastifyPluginAsyncZod = (server) => {
+const authRoutes: FastifyPluginAsyncZod = async (server) => {
   server.addHook('preHandler', server.auth([server.keycloakAuth]))
 
   server.post('/logout', async (req, reply) => {
